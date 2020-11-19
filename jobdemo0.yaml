@@ -1,13 +1,103 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"name":"echo-value","namespace":"default"},"spec":{"backoffLimit":4,"template":{"spec":{"containers":[{"command":["echo","echo success"],"image":"busybox","name":"echo-value"}],"restartPolicy":"Never"}}}}
+  creationTimestamp: "2020-11-19T13:11:46Z"
+  labels:
+    controller-uid: 18f54de7-a1b5-4381-937e-83892c915f1c
+    job-name: echo-value
+  managedFields:
+  - apiVersion: batch/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        f:backoffLimit: {}
+        f:completions: {}
+        f:parallelism: {}
+        f:template:
+          f:spec:
+            f:containers:
+              k:{"name":"echo-value"}:
+                .: {}
+                f:command: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-11-19T13:11:46Z"
+  - apiVersion: batch/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:completionTime: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Complete"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:startTime: {}
+        f:succeeded: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-11-19T13:11:50Z"
   name: echo-value
+  namespace: default
+  resourceVersion: "1251456793"
+  selfLink: /apis/batch/v1/namespaces/default/jobs/echo-value
+  uid: 18f54de7-a1b5-4381-937e-83892c915f1c
 spec:
+  backoffLimit: 4
+  completions: 1
+  parallelism: 1
+  selector:
+    matchLabels:
+      controller-uid: 18f54de7-a1b5-4381-937e-83892c915f1c
   template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        controller-uid: 18f54de7-a1b5-4381-937e-83892c915f1c
+        job-name: echo-value
     spec:
       containers:
-      - name: echo-value
+      - command:
+        - echo
+        - echo success
         image: busybox
-        command: ["echo",  "echo success"]
+        imagePullPolicy: Always
+        name: echo-value
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
       restartPolicy: Never
-  backoffLimit: 4
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  completionTime: "2020-11-19T13:11:50Z"
+  conditions:
+  - lastProbeTime: "2020-11-19T13:11:50Z"
+    lastTransitionTime: "2020-11-19T13:11:50Z"
+    status: "True"
+    type: Complete
+  startTime: "2020-11-19T13:11:46Z"
+  succeeded: 1
