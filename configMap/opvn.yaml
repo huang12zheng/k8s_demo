@@ -1,0 +1,7 @@
+apiVersion: v1
+data:
+  OVPN_DATA: ovpn-data
+  OVPN_SERVER_URL: udp://vpn.zhifou.com
+kind: ConfigMap
+metadata:
+  name: ovpn
