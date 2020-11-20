@@ -1,0 +1,102 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"name":"echo-value","namespace":"default"},"spec":{"backoffLimit":4,"template":{"spec":{"containers":[{"command":["echo","echo success"],"image":"busybox","name":"echo-value"}],"restartPolicy":"Never"}}}}
+  creationTimestamp: "2020-11-19T16:43:41Z"
+  labels:
+    controller-uid: 688d3fab-4c13-4073-9b69-d5fe704a43e6
+    job-name: echo-value
+  managedFields:
+  - apiVersion: batch/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        f:backoffLimit: {}
+        f:completions: {}
+        f:parallelism: {}
+        f:template:
+          f:spec:
+            f:containers:
+              k:{"name":"echo-value"}:
+                .: {}
+                f:command: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-11-19T16:43:41Z"
+  - apiVersion: batch/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:completionTime: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Complete"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:startTime: {}
+        f:succeeded: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-11-19T16:43:44Z"
+  name: echo-value
+  namespace: default
+  selfLink: /apis/batch/v1/namespaces/default/jobs/echo-value
+  uid: 688d3fab-4c13-4073-9b69-d5fe704a43e6
+spec:
+  backoffLimit: 5
+  completions: 1
+  parallelism: 1
+  selector:
+    matchLabels:
+      controller-uid: 688d3fab-4c13-4073-9b69-d5fe704a43e6
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        controller-uid: 688d3fab-4c13-4073-9b69-d5fe704a43e6
+        job-name: echo-value
+    spec:
+      containers:
+      - command:
+        - echo
+        - echo success32
+        image: busybox
+        imagePullPolicy: Always
+        name: echo-value
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Never
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  completionTime: "2020-11-19T16:43:44Z"
+  conditions:
+  - lastProbeTime: "2020-11-19T16:43:44Z"
+    lastTransitionTime: "2020-11-19T16:43:44Z"
+    status: "True"
+    type: Complete
+  startTime: "2020-11-19T16:43:41Z"
+  succeeded: 1

@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: echo-value
+spec:
+  template:
+    spec:
+      containers:
+      - name: echo-value
+        image: busybox
+        command: ["echo",  "echo success3"]
+      restartPolicy: Never
+  backoffLimit: 4
